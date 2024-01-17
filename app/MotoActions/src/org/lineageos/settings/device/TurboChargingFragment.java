@@ -22,7 +22,7 @@ import android.os.Bundle;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.android.settingslib.widget.MainSwitchPreference;
@@ -35,7 +35,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
-public class TurboChargingFragment extends PreferenceFragment {
+public class TurboChargingFragment extends PreferenceFragmentCompat {
 
     private static final String TAG = "TurboChargingFragment";
     private static final String CHARGE_CURRENT_FILE = "/sys/devices/platform/charger/power_supply/mtk-master-charger/constant_charge_current_max";
@@ -43,7 +43,7 @@ public class TurboChargingFragment extends PreferenceFragment {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.charging_panel);
+        setPreferencesFromResource(R.xml.charging_panel, rootKey);
 
         MainSwitchPreference switchPreference = findPreference("turbo_enable");
         if (switchPreference != null) {
