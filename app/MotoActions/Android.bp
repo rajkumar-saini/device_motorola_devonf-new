@@ -1,6 +1,7 @@
 android_app {
     name: "MotoActions",
     defaults: ["SettingsLibDefaults"],
+    overrides: ["TouchGestures"],
 
     srcs: ["src/**/*.java"],
     resource_dirs: ["res"],
