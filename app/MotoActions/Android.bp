@@ -4,7 +4,6 @@ android_app {
     overrides: ["TouchGestures"],
 
     srcs: ["src/**/*.java"],
-    resource_dirs: ["res"],
 
     certificate: "platform",
     platform_apis: true,
