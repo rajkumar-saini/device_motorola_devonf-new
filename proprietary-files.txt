@@ -180,11 +180,6 @@ vendor/etc/audio_param/Volume_ParamUnitDesc.xml
 vendor/etc/SwadCalib.bin
 vendor/etc/SwadParamList.txt
 
-# Audio (SoundFX)
-vendor/lib64/soundfx/libdlbvol.so
-vendor/lib64/soundfx/libswdap.so
-vendor/lib64/soundfx/libswgamedap.so
-
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.1-service-mediatek
 vendor/bin/autobt
@@ -1160,26 +1155,6 @@ vendor/lib64/vendor.mediatek.hardware.pq@2.7.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.8.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.9.so
 
-# Dolby
-vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
-vendor/bin/hw/vendor.dolby.media.c2@1.0-service
-vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
-vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc
-vendor/etc/vintf/manifest/vendor.dolby.hardware.dms.xml:vendor/etc/vintf/manifest/manifest_vendor.dolby.hardware.dms.xml
-vendor/etc/media_codecs_dolby_audio.xml
-vendor/lib/libdapparamstorage.so
-vendor/lib/libdlbpreg.so
-vendor/lib/vendor.dolby.hardware.dms@2.0.so
-vendor/lib64/libcodec2_soft_ac4dec.so
-vendor/lib64/libcodec2_soft_ddpdec.so
-vendor/lib64/libcodec2_store_dolby.so
-vendor/lib64/libdapparamstorage.so
-vendor/lib64/libdeccfg.so
-vendor/lib64/libdlbdsservice.so
-vendor/lib64/libdlbpreg.so
-vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
-vendor/lib64/vendor.dolby.hardware.dms@2.0.so
-
 # DRM
 vendor/bin/hw/android.hardware.drm@1.4-service.widevine
 vendor/etc/init/android.hardware.drm@1.4-service.widevine.rc
@@ -1466,7 +1441,6 @@ vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 vendor/etc/seccomp_policy/mediacodec.policy
 vendor/etc/seccomp_policy/mediaextractor.policy
 vendor/etc/seccomp_policy/mediaswcodec.policy
-vendor/etc/vintf/manifest/manifest_media_c2_V1_1_dolbydax39.xml:vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml
 vendor/etc/AbnormalDisplayLog_dynamic.xml
 vendor/etc/VideoLog_dynamic.xml
 vendor/etc/mtk_omx_core.cfg
