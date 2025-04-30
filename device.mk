@@ -167,7 +167,6 @@ PRODUCT_PACKAGES += \
     init_connectivity.rc \
     init.connectivity.common.rc \
     init.devonf.sku.rc \
-    init.mmi.chipset.rc \
     init.mmi.overlay.rc \
     init.mmi.rc \
     init.modem.rc \
