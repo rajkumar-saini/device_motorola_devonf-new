@@ -1341,7 +1341,6 @@ vendor/lib64/libgralloc_metadata.so
 vendor/lib64/libgralloctypes_mtk.so
 
 # Health
-vendor/bin/batt_health
 vendor/bin/fuelgauged
 vendor/etc/init/fuelgauged_init.rc
 vendor/lib64/libfgauge_gm30.so
