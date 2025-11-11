@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_devonf.mk
+    $(LOCAL_DIR)/custom_devonf.mk
