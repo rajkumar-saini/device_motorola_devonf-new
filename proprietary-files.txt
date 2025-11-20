@@ -1,10 +1,8 @@
 # Device proprietary files - From devonf_g_sys-user 14 U1TNS34M.82-12-7-4 00d08 release-keys, unless pinned
 
 # AEE
-vendor/lib/libaedv.so
 vendor/lib/libladder.so
 vendor/lib/libudf.so
-vendor/lib64/libaedv.so
 vendor/lib64/libladder.so
 vendor/lib64/libudf.so
 
