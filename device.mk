@@ -251,6 +251,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayDevonf \
     FrameworksResOverlayDevonf \
+    LauncherOverlayDevonf \
     PowerOffAlarmOverlayDevonf \
     SettingsOverlayDevonf \
     SettingsProviderOverlayDevonf \
