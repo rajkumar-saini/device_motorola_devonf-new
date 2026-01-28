@@ -14,6 +14,9 @@
     limitations under the License.
 -->
 <permissions>
-    <library name="mediatek-ims-oem-plugin" file="/system/framework/mediatek-ims-oem-plugin.jar"/>
+    <library
+        name="mediatek-ims-oem-plugin"
+        file="/system_ext/framework/mediatek-ims-oem-plugin.jar"
+    />
 </permissions>
 

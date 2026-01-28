@@ -14,6 +14,9 @@
     limitations under the License.
 -->
 <permissions>
-    <library name="mediatek-framework" file="/system/framework/mediatek-framework.jar"/>
+    <library
+        name="mediatek-framework"
+        file="/system_ext/framework/mediatek-framework.jar"
+    />
 </permissions>
 
