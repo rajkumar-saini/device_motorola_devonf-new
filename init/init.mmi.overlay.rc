@@ -85,7 +85,7 @@ on boot
    chmod 0664 /proc/cts_tool
 
 on fs
-   exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules mmi_relay nova_0flash_mmi_v2
+   exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules nova_0flash_mmi_v2
 
 # camera eeprom calibration
 on property:sys.boot_completed=1
