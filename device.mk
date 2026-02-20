@@ -103,10 +103,6 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,libcameraservice,ext_lib,//$(DEVICE_PATH):libcameraservice_extension.devonf)
 
-# Cgroup
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
-
 # Dex-pre-opt exclusions
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
 
