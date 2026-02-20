@@ -1608,12 +1608,7 @@ vendor/etc/motorola/sensors/mot_sensor_settings.json
 vendor/etc/public.libraries.txt
 
 # Netd daemon
-vendor/bin/netdagent
-vendor/etc/init/netdagent.rc
-vendor/etc/init/networksetting.rc
 vendor/lib/vendor.mediatek.hardware.netdagent@1.0.so
-vendor/lib64/libforkexecwrap.so
-vendor/lib64/libifcutils_mtk.so
 vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 
 # Neural networks (System)
@@ -1793,7 +1788,6 @@ vendor/bin/bip_ap
 vendor/bin/ccci_fsd
 vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
-vendor/bin/ipsec_mon
 vendor/bin/muxreport
 vendor/etc/apdb/APDB_MT6855___W2401
 vendor/etc/apdb/APDB_MT6855___W2401_ENUM
@@ -1802,7 +1796,6 @@ vendor/etc/init/init.bip_ap.rc
 vendor/etc/init/init.cccifsd.rc
 vendor/etc/init/init.cccimdinit.rc
 vendor/etc/init/init.cccirpcd.rc
-vendor/etc/init/ipsec_mon.rc
 vendor/etc/init/mtkrild.rc
 vendor/etc/init/muxreport.rc
 vendor/etc/init/vendor.mediatek.hardware.mmagent@1.1-service.rc
@@ -1861,9 +1854,11 @@ vendor/lib64/libcapctrl.so
 vendor/lib64/libcares_naptr.so
 vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
+vendor/lib64/libforkexecwrap.so
 vendor/lib64/libgwsd-ril.so
 vendor/lib64/libgwsdv2-ril.so
 vendor/lib64/libgwsdv3-ril.so
+vendor/lib64/libifcutils_mtk.so
 vendor/lib64/libipsec_ims_shr.so
 vendor/lib64/libmipc.so
 vendor/lib64/libmnetlink_v104.so
