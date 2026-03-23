@@ -1,3 +1,6 @@
+# Double Tap
+genfscon sysfs /devices/virtual/touchscreen/primary/double_tap_enabled           u:object_r:vendor_sysfs_touchpanel:s0
+
 # Fingerprint
 genfscon sysfs /devices/virtual/fingerprint u:object_r:vendor_sysfs_fingerprint:s0
 

@@ -6,9 +6,6 @@
 /mnt/vendor/persist/camera(/.*)?                                                       u:object_r:vendor_persist_camera_file:s0
 /vendor/bin/hw/motorola\.hardware\.camera\.imgtuner@2\.0-service                       u:object_r:hal_camera_default_exec:s0
 
-# Double Tap
-/sys/devices/virtual/touchscreen/primary/double_tap_enabled                            u:object_r:vendor_sysfs_touchpanel:s0
-
 # Fingerprint
 /data/vendor/.fps(/.*)?                                                                u:object_r:fingerprint_vendor_data_file:s0
 /dev/chipone_fp                                                                        u:object_r:fingerprint_device:s0
@@ -52,9 +49,10 @@
 # Power
 /vendor/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr                      u:object_r:hal_power_default_exec:s0
 
+# Touch
+/vendor/bin/hw/vendor\.lineage\.touch-service\.devonf                                  u:object_r:hal_lineage_touch_default_exec:s0
+
 # Wakeups
 /sys/devices/platform/soc/[^*]+/wakeup/wakeup[0-9]+(/.*)?                              u:object_r:sysfs_wakeup:s0
 /sys/devices/virtual/input/input[0-9]+/wakeup[0-9]+(/.*)?                              u:object_r:sysfs_wakeup:s0
 /sys/devices/virtual/misc/[^*]+/wakeup[0-9]+(/.*)?                                     u:object_r:sysfs_wakeup:s0
-
-/vendor/bin/hw/vendor\.lineage\.touch-service\.devonf                                  u:object_r:hal_lineage_touch_default_exec:s0
