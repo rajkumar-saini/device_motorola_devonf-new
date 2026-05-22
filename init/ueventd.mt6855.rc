@@ -117,9 +117,6 @@
 #  chipone  fingerprint
 /dev/fpsensor  0660    system     system
 
-#  egis  fingerprint
-/dev/esfp0  0660    system     system
-
 # set permission for fpc  fingerprint
 /sys/class/fingerprint/fpc_spi   wakeup_enable   0660     system    system
 /sys/class/fingerprint/fpc_spi   irq             0660     system    system
@@ -129,7 +126,6 @@
 /sys/class/fingerprint/fpc_spi   irq_enable      0660     system    system
 /sys/class/fingerprint/fpc_spi   vendor          0660     system    system
 /sys/class/fingerprint/fpc_spi   modalias        0660     system    system
-
 
 # change permission for some capsensor nodes
 /sys/class/sensors/Moto\ CapSense\ Ch*   enable       0660    root    input
