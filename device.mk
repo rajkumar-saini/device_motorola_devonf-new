@@ -169,7 +169,6 @@ PRODUCT_PACKAGES += \
     init.connectivity.common.rc \
     init.devonf.sku.rc \
     init.insmod.sh \
-    init.insmod.mt6855.cfg \
     init.mmi.overlay.rc \
     init.mmi.rc \
     init.mt6855.rc \
