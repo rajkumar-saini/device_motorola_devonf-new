@@ -1157,11 +1157,8 @@ vendor/lib64/libwvhidl.so
 # Fingerprint
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-chipone
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-fpc
-vendor/bin/hw/chipone_ident
-vendor/bin/hw/fpc_ident
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-chipone2.rc
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-fpc2.rc
-vendor/etc/init/init.chipone_ident.rc
 vendor/etc/vintf/manifest/manifest_IMoto_Fingerprint.xml
 vendor/framework/com.fingerprints.extension.jar
 vendor/lib64/hw/fpsensor_fingerprint.default.so
