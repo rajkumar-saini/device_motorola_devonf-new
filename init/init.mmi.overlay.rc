@@ -8,13 +8,6 @@ on post-fs-data
     mkdir /data/vendor/.fps 0770 system vendor_fingerp
     mkdir /mnt/vendor/persist/fps 0770 system system
 
-    # Required by touchRec for write the touch data
-    mkdir /data/vendor/touchrec 0770 input input
-    chown input input /data/vendor/touchrec/bootindex
-    chown input input /data/vendor/touchrec/lastbootuuid
-    chown input input /data/vendor/touchrec/touch_data.txt
-    chmod 0664 /data/vendor/touchrec/touch_data.txt
-
 on late-init
     #moto algo params
     chmod 0660 /sys/bus/platform/drivers/mtk_nanohub/algo_params
