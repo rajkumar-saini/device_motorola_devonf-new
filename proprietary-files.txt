@@ -1155,11 +1155,6 @@ vendor/lib64/liburee_meta_drmkeyinstall.so
 vendor/lib64/libwvhidl.so
 
 # Fingerprint
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-chipone
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-fpc
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-chipone2.rc
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-fpc2.rc
-vendor/etc/vintf/manifest/manifest_IMoto_Fingerprint.xml
 vendor/framework/com.fingerprints.extension.jar
 vendor/lib64/hw/fpsensor_fingerprint.default.so
 vendor/lib64/com.fingerprints.extension@1.0.so
