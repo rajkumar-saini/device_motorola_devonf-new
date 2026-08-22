@@ -2,6 +2,7 @@ ktd3136_bl.ko
 ocp2138.ko
 bootprof.ko
 sc8551_mmi.ko
+bq25980_mmi.ko
 dbgtop-drm.ko
 mtk_disp_notify.ko
 log_store.ko
