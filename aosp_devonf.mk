@@ -19,7 +19,7 @@ PRODUCT_NAME := aosp_devonf
 PRODUCT_DEVICE := devonf
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := moto g73 5G 
+PRODUCT_MODEL := moto g73 5G
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
