@@ -21,10 +21,10 @@ vendor/etc/ap_gain.bin
 vendor/etc/ap_gain_mmul.bin
 vendor/etc/aurisys_config.xml
 vendor/etc/aurisys_config_rv.xml
--vendor/lib/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib/hw/audio.primary.mt6855.so
--vendor/lib/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib/hw/audio.r_submix.mt6855.so
 -vendor/lib/hw/android.hardware.audio@6.0-impl-mediatek.so
 -vendor/lib/hw/android.hardware.audio@7.0-impl-mediatek.so
+-vendor/lib/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib/hw/audio.primary.mt6855.so
+-vendor/lib/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib/hw/audio.r_submix.mt6855.so
 -vendor/lib/libMtkSpeechEnh.so
 -vendor/lib/libMtkSpeechEnh_swb.so
 -vendor/lib/lib_iir.so
@@ -52,10 +52,10 @@ vendor/etc/aurisys_config_rv.xml
 -vendor/lib/libspeechparser_vendor.so
 -vendor/lib/vendor.mediatek.hardware.audio@6.1.so
 -vendor/lib/vendor.mediatek.hardware.audio@7.1.so
--vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6855.so
--vendor/lib64/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib64/hw/audio.r_submix.mt6855.so
 -vendor/lib64/hw/android.hardware.audio@6.0-impl-mediatek.so
 -vendor/lib64/hw/android.hardware.audio@7.0-impl-mediatek.so
+-vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6855.so
+-vendor/lib64/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib64/hw/audio.r_submix.mt6855.so
 -vendor/lib64/libalsautils.so:vendor/lib64/libalsautils-v31.so
 -vendor/lib64/mt6855/libstereoinfoaccessor_vsdof.so;SYMLINK=vendor/lib64/libstereoinfoaccessor_vsdof.so
 -vendor/lib64/libMtkSpeechEnh.so
