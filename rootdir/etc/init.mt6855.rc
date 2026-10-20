@@ -930,19 +930,3 @@ on property:persist.vendor.mediatek.fast_charging.support=*
 on boot
     insmod /vendor/lib/modules/fpsgo.ko
 
-# NFC
-on boot && property:ro.vendor.hw.nfc=true
-    start vendor.nfc_hal_service
-
-on boot && property:ro.vendor.hw.nfc=nxp
-    start vendor.nfc_hal_service
-
-on boot && property:ro.vendor.hw.nfc=ese_nxp
-    start vendor.nfc_hal_service
-
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
-    override
-    class early_hal
-    user nfc
-    group nfc drmrpc system
-    disabled
