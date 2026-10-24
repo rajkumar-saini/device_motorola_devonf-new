@@ -236,7 +236,6 @@ PRODUCT_PACKAGES += \
     FrameworksResOverlayDevonf \
     OpenDeltaOverlayDevonf \
     PowerOffAlarmOverlayDevonf \
-    SettingsLibOverlayDevonf \
     SettingsOverlayDevonf \
     SettingsProviderOverlayDevonf \
     SystemUIOverlayDevonf \
