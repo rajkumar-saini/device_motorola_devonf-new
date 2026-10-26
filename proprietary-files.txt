@@ -1588,8 +1588,6 @@ vendor/bin/init.mmi.boot.sh
 vendor/bin/init.mmi.shutdown.sh
 vendor/bin/init.mmi.touch.sh
 vendor/bin/init.oem.fingerprint2.sh
-vendor/bin/kpgather
-vendor/bin/kpreadwrite
 vendor/bin/pstore_annotate.sh
 vendor/bin/vendor.mmi.cxp.sh
 vendor/etc/init/hw/init.mmi.backup.trustlet.rc
