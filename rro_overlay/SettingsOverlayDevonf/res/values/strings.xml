@@ -12,9 +12,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="maintainer_name" translatable="false">Dark Devil</string>
-    <string name="maintainer_telegram" translatable="false">https://t.me/Dark_Devil_Updates</string>
-
+    <string name="maintainer_name" translatable="false">Adarsh Singh</string>
+    <string name="maintainer_telegram" translatable="false">https://t.me/adarsh0s</string>
     <!-- [CHAR_LIMIT=20] Battery use screen.  Battery status shown in chart label when charging speed is fast.  -->
     <string name="battery_info_status_charging_fast_v2">Turbo charging</string>
 </resources>

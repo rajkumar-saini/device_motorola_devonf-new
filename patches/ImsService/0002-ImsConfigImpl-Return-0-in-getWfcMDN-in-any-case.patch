@@ -1,6 +1,6 @@
 From dbacfa33099d87695b324a38357e38d8a85ef040 Mon Sep 17 00:00:00 2001
 From: Erfan Abdi <erfangplus@gmail.com>
-Date: Thu, 6 Mar 2025 18:54:18 +0530
+Date: Mon, 17 Jun 2024 21:47:41 +0530
 Subject: [PATCH 2/8] ImsConfigImpl: Return 0 in getWfcMDN in any case
 
 Signed-off-by: betaxab <betaxab@gmail.com>
@@ -37,5 +37,5 @@ index b4b3acf..3fa2461 100644
  .end method
  
 -- 
-2.53.0
+2.45.2
 

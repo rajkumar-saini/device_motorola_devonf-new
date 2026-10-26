@@ -3,12 +3,14 @@
 import /vendor/etc/init/hw/init_connectivity.rc
 import /vendor/etc/init/hw/init.connectivity.common.rc
 import /vendor/etc/init/hw/init.project.rc
+import /vendor/etc/init/hw/init.aee.rc
 import /vendor/etc/init/hw/init.volte.rc
 import /vendor/etc/init/hw/init.mal.rc
 import /vendor/etc/init/hw/init.sensor_2_0.rc
 import /vendor/etc/init/hw/init.mt6855.power.rc
 import /vendor/etc/init/hw/init.mt6855.usb.rc
 import /vendor/etc/init/hw/init.mmi.rc
+import /vendor/etc/init/hw/init.modem.rc
 
 on early-init
     write /proc/bootprof "INIT:early-init"
@@ -25,6 +27,8 @@ on init
 
 on late-init
     write /proc/bootprof "INIT:late-init"
+# enable rcu_expedited
+    write /sys/kernel/rcu_expedited 1
 
 # mount different fs start
 
@@ -68,6 +72,7 @@ on fs
     # mount fstab
     write /proc/bootprof "INIT:Mount_START"
     mount_all --early
+    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
 on late-fs
@@ -83,10 +88,6 @@ on post-fs
 
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
-
-    # Support A/B feature for UFS boot region
-    symlink /dev/block/sda /dev/block/by-name/preloader_a
-    symlink /dev/block/sdb /dev/block/by-name/preloader_b
 
 # change owner
     chown system system /proc/bootprof
@@ -309,6 +310,7 @@ on boot
     # gauge symbolic
     symlink /sys/devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk_gauge /dev/gauge
 
+
     # Allow system to change fast charging current node
     chown system system /sys/devices/platform/soc/soc:odm/soc:odm:mmi_chrg_manager/power_supply/mmi_chrg_manager/constant_charge_current_max
     chmod 0660 /sys/devices/platform/soc/soc:odm/soc:odm:mmi_chrg_manager/power_supply/mmi_chrg_manager/constant_charge_current_max
@@ -351,8 +353,4 @@ on boot
 on property:sys.boot_completed=1
     # stop bootprof
     write /proc/bootprof 0
-
-# reset mdmode when modem crash happens in ATM
-on property:vendor.mtk.md1.status=reset
-    setprop persist.vendor.atm.mdmode normal
 
