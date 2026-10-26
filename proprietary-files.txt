@@ -1424,7 +1424,6 @@ vendor/etc/init/tetheroffloadservice.rc
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
 vendor/bin/mt6855/jpegtool;SYMLINK=vendor/bin/jpegtool
 vendor/bin/mt6855/v3avpud.mt6855;SYMLINK=vendor/bin/v3avpud
-vendor/bin/vpud
 vendor/etc/init/android.hardware.media.c2@1.2-mediatek-64b.rc
 vendor/etc/init/v3avpud.rc
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
