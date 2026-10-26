@@ -235,7 +235,6 @@ PRODUCT_COPY_FILES += \
 
 # Overlay
 PRODUCT_PACKAGES += \
-    BesLoudnessOverlayDevonf \
     CarrierConfigOverlayDevonf \
     FrameworksResOverlayDevonf \
     OpenDeltaOverlayDevonf \
