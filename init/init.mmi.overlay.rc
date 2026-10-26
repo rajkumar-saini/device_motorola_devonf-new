@@ -1,4 +1,4 @@
-on early-init
+n early-init
     insmod /vendor/lib/modules/sensors_class.ko
     insmod /vendor/lib/modules/sx937x_sar.ko
     exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules qpnp_adaptive_charge leds-gpio pn557
@@ -83,9 +83,6 @@ on boot
    chown system system /sys/class/touchscreen/primary/gesture
    chmod 0660 /sys/class/touchscreen/primary/gesture
    chmod 0664 /proc/cts_tool
-
-    write /sys/block/sdc/queue/scheduler bfq
-    write /sys/block/sdc/queue/iosched/slice_idle 0
 
 on fs
    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules mmi_relay nova_0flash_mmi_v2
