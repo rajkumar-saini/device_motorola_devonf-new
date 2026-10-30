@@ -1,4 +1,4 @@
-# Device proprietary files - From devonf_g_sys-user 14 U1TNS34.82-12-7-25 5b006d release-keys, unless pinned
+# Device proprietary files - From devonf_g_sys-user 14 U1TNS34.82-12-7-26 75f91 release-keys, unless pinned
 
 # AEE
 vendor/lib/libladder.so
