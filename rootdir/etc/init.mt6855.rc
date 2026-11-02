@@ -918,19 +918,3 @@ on property:vendor.mtk.md1.status=reset
 on property:persist.vendor.mediatek.fast_charging.support=*
     write /sys/devices/platform/charger/fast_chg_indicator ${persist.vendor.mediatek.fast_charging.support}
 
-# NFC
-on boot && property:ro.vendor.hw.nfc=true
-    start vendor.nfc_hal_service
-
-on boot && property:ro.vendor.hw.nfc=nxp
-    start vendor.nfc_hal_service
-
-on boot && property:ro.vendor.hw.nfc=ese_nxp
-    start vendor.nfc_hal_service
-
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
-    override
-    class early_hal
-    user nfc
-    group nfc drmrpc system
-    disabled

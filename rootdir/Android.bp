@@ -41,6 +41,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.devonf.sku.rc",
+    src: "etc/init.devonf.sku.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.mmi.chipset.rc",
     src: "etc/init.mmi.chipset.rc",
     sub_dir: "init/hw",
