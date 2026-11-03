@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "RegulatoryOverlayXT2237-2",
+    vendor: true,
+}

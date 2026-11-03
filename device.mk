@@ -244,6 +244,10 @@ PRODUCT_PACKAGES += \
     TetheringConfigResOverlayDevonf \
     WifiResOverlayDevonf
 
+PRODUCT_PACKAGES += \
+    RegulatoryOverlayXT2237-1 \
+    RegulatoryOverlayXT2237-2
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
