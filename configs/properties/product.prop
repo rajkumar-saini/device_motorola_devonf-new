@@ -1,14 +1,3 @@
-persist.vendor.mtk_rcs_ua_support=0
-persist.vendor.mtk_uce_support=0
-persist.vendor.vt.RTPInfo=1
-persist.vendor.vt.supported=1
-ril.subscription.types=RUIM
-ro.mot.build.customerid=global
-ro.surface_flinger.enable_frame_rate_override=true
-ro.telephony.default_network=27,27
-ro.vendor.radio.imei.sv=23
-ro.com.google.lens.oem_camera_package=com.motorola.camera3
-
 # FM
 ro.fm.chip=0x6631
 ro.fm.band=1
@@ -25,3 +14,17 @@ ro.fm.fake_chan_0=9210 -205
 ro.fm.fake_chan_1=9600 -152
 ro.fm.fake_chan_2=10400 -152
 ro.fm.fake_chan_3=10750 -205
+
+# Moto
+ro.mot.build.customerid=global
+
+# RIL
+persist.vendor.mtk_rcs_ua_support=0
+persist.vendor.mtk_uce_support=0
+persist.vendor.vt.RTPInfo=1
+persist.vendor.vt.supported=1
+ril.subscription.types=RUIM
+ro.surface_flinger.enable_frame_rate_override=true
+ro.telephony.default_network=27,27
+ro.vendor.radio.imei.sv=23
+ro.com.google.lens.oem_camera_package=com.motorola.camera3
