@@ -1,3 +1,17 @@
+# devonf project sku
+
+on property:ro.boot.hardware.sku="XT2237-1"
+    setprop ro.vendor.soc.manufacturer "Mediatek"
+    setprop ro.vendor.soc.model.external_name "MT6855V/AZA"
+    setprop ro.vendor.soc.model.part_name "MT6855V/AZA"
+    setprop ro.vendor.soc.model "MT6855V/AZA"
+
+on property:ro.boot.hardware.sku="XT2237-2"
+    setprop ro.vendor.soc.manufacturer "Mediatek"
+    setprop ro.vendor.soc.model.external_name "MT6855V/AZA"
+    setprop ro.vendor.soc.model.part_name "MT6855V/AZA"
+    setprop ro.vendor.soc.model "MT6855V/AZA"
+
 on post-fs && property:ro.vendor.hw.ram=8GB
     setprop dalvik.vm.heapstartsize 24m
     setprop dalvik.vm.heapgrowthlimit 256m
