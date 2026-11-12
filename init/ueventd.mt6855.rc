@@ -120,9 +120,6 @@
 #  egis  fingerprint
 /dev/esfp0  0660    system     system
 
-# goodix fingerprint
-/dev/goodix_fp  0660    system     system
-
 # set permission for fpc  fingerprint
 /sys/class/fingerprint/fpc_spi   wakeup_enable   0660     system    system
 /sys/class/fingerprint/fpc_spi   irq             0660     system    system

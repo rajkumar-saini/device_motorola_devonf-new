@@ -1,2 +1,2 @@
-# /mnt/vendor/persist/goodix
+# /mnt/vendor/persist/fps
 r_dir_file(tee, vendor_persist_fingerprint_file)
