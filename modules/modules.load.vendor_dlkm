@@ -25,6 +25,7 @@ asix.ko
 ax88179_178a.ko
 mtk_u_ether.ko
 mtk_usb_f_rndis.ko
+rps_perf.ko
 mtk_battery_oc_throttling.ko
 mtk_low_battery_throttling.ko
 mtk_dynamic_loading_throttling.ko
@@ -77,6 +78,7 @@ snd-soc-mtk-scp-ultra.ko
 mt6855-mt6369.ko
 mddp.ko
 mtk_qos.ko
+atf_logger.ko
 mtk-vow.ko
 mtk-scp-vow.ko
 vcp.ko
@@ -103,6 +105,9 @@ mtk-swpm-dbg-common-v1.ko
 mtk-swpm-dbg-v6855.ko
 mtk-dvfsrc-start.ko
 cpudvfs.ko
+cpufreq_sugov_ext.ko
+scheduler.ko
+cpuqos_v3.ko
 hf_manager.ko
 sensorhub.ko
 sspm_v3.ko
@@ -124,10 +129,16 @@ mtk_rpmsg_mbox.ko
 mtk-mbox.ko
 mtk_tinysys_ipi.ko
 fhctl.ko
+mtk_fpsgo.ko
+fpsgo.ko
+mtk_perf_ioctl.ko
 scp.ko
 mtk_cm_ipi.ko
 mtk_cm_mgr.ko
 mtk_cm_mgr_mt6855.ko
+uload_ind.ko
+load_track.ko
+trace_mmstat.ko
 imgsensor_isp6s.ko
 camera_eeprom.ko
 archcounter_timesync.ko
@@ -144,6 +155,9 @@ camera_dip_isp6s.ko
 widevine_driver.ko
 sec.ko
 vdec-fmt.ko
+mtk_perf_common.ko
+task_turbo.ko
+mtk_core_ctl.ko
 mtk-pwm.ko
 mtk_irtx_pwm.ko
 arm_dsu_pmu.ko

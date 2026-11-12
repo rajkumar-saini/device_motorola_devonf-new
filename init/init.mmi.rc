@@ -118,7 +118,13 @@ service vendor.mmi-touch-sh /vendor/bin/init.mmi.touch.sh
     user root
     oneshot
 
-service vendor.hal-fps-sh /vendor/bin/init.oem.fingerprint.sh
+service vendor.mmi-shutdown-sh /vendor/bin/init.mmi.shutdown.sh
+    class core
+    user root
+    oneshot
+    disabled
+
+service vendor.hal-fps-sh /vendor/bin/init.oem.fingerprint2.sh
     class late_start
     user root
     group system
@@ -199,6 +205,9 @@ on property:ro.vendor.hw.dualsim=false
 
 on property:ro.sys.force_max_chrg_temp=*
     write /sys/devices/platform/charger/force_max_chrg_temp ${ro.sys.force_max_chrg_temp}
+
+on shutdown
+    exec_start vendor.mmi-shutdown-sh
 
 # Sync the system MSI property of RKP state onto vendor
 on property:sys.rkp.enable=* && property:sys.boot_completed=1

@@ -51,7 +51,6 @@ public class MotoActionsSettings {
     static final String CARRIER_PROP = "ro.boot.carrier";
 
     private final Context mContext;
-    private final TorchAction mTorchAction;
     private final UpdatedStateNotifier mUpdatedStateNotifier;
 
     private boolean mChopChopEnabled;
@@ -68,7 +67,6 @@ public class MotoActionsSettings {
         sharedPrefs.registerOnSharedPreferenceChangeListener(mPrefListener);
         mContext = context;
         mUpdatedStateNotifier = updatedStateNotifier;
-        mTorchAction = new TorchAction(mContext);
     }
 
     public boolean isChopChopGestureEnabled() {
@@ -132,7 +130,7 @@ public class MotoActionsSettings {
     }
 
     public void chopChopAction() {
-        mTorchAction.action();
+        new TorchAction(mContext).action();
     }
 
     private static String getStringProperty(Context context, String key) {

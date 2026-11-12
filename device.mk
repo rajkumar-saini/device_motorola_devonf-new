@@ -1,5 +1,6 @@
 #
-# SPDX-FileCopyrightText: PixelOS
+# Copyright (C) 2024 ArrowOS
+# Copyright (C) 2024 PixelOS
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -9,8 +10,12 @@ DEVICE_PATH := device/motorola/devonf
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
+# Dalvik VM Configuration
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
 # Inherit virtual_ab_ota product
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 # Add vendor log tags
 include $(DEVICE_PATH)/configs/properties/vendor_log_tags.mk
@@ -64,9 +69,11 @@ PRODUCT_PACKAGES += \
     audio_policy.stub \
     libalsautils \
     libopus.vendor \
-    audioclient-types-aidl-cpp.vendor
+    libspatialaudio \
+    audioclient-types-aidl-cpp.vendor \
 
 PRODUCT_PACKAGES += \
+    DolbyAtmos \
     MtkInCallService
 
 PRODUCT_COPY_FILES += \
@@ -92,6 +99,9 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.bluetooth-service.mediatek
 
+# Blur
+TARGET_ENABLE_BLUR := true
+
 # Boot
 PRODUCT_PACKAGES += \
     com.android.hardware.boot \
@@ -101,7 +111,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcamera2ndk_vendor
 
-$(call soong_config_set,libcameraservice,ext_lib,//$(DEVICE_PATH):libcameraservice_extension.devonf)
+# Cgroup
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # Dex-pre-opt exclusions
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
@@ -119,6 +131,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.hardware.drm.clearkey
 
+# DSP Volume Synchronizer
+PRODUCT_PACKAGES += \
+    DSPVolumeSynchronizer
+
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
@@ -132,10 +148,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 PRODUCT_PACKAGES += \
     android.hardware.fastboot-service.example_recovery \
     fastbootd
-
-# FM Radio
-PRODUCT_PACKAGES += \
-    FMRadio
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -153,12 +165,12 @@ PRODUCT_PACKAGES += \
     libpcap.vendor
 
 # IMS
-$(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
-
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/privapp-permissions-com.mediatek.ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.ims.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-ims-base.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-ims-base.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-ims-oem-plugin.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-ims-oem-plugin.xml
+    $(DEVICE_PATH)/configs/permissions/mediatek-common.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/mediatek-common.xml \
+    $(DEVICE_PATH)/configs/permissions/mediatek-framework.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/mediatek-framework.xml \
+    $(DEVICE_PATH)/configs/permissions/mediatek-ims-base.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/mediatek-ims-base.xml \
+    $(DEVICE_PATH)/configs/permissions/mediatek-ims-oem-plugin.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/mediatek-ims-oem-plugin.xml \
 
 # Init
 PRODUCT_PACKAGES += \
@@ -167,15 +179,13 @@ PRODUCT_PACKAGES += \
     fstab.mt6855.vendor_ramdisk \
     init_connectivity.rc \
     init.connectivity.common.rc \
-    init.devonf.sku.rc \
-    init.insmod.sh \
     init.mmi.overlay.rc \
     init.mmi.rc \
+    init.modem.rc \
     init.mt6855.rc \
     init.mt6855.power.rc \
     init.mt6855.usb.rc \
     init.mtkgki.rc \
-    init.oem.fingerprint.sh \
     init.oem.hw.sh \
     init.project.rc \
     init.recovery.mt6855.rc \
@@ -204,6 +214,7 @@ PRODUCT_PACKAGES += \
     android.hardware.lights-service.devonf
 
 # Media
+
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(DEVICE_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
@@ -214,6 +225,9 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
     $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(DEVICE_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml
 
 # Memtrack
 PRODUCT_PACKAGES += \
@@ -243,14 +257,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
 
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/nfc/libnfc-nxp_557.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp_557.conf
-
 # Overlay
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayDevonf \
     FrameworksResOverlayDevonf \
-    LauncherOverlayDevonf \
+    OpenDeltaOverlayDevonf \
     PowerOffAlarmOverlayDevonf \
     SettingsOverlayDevonf \
     SettingsProviderOverlayDevonf \
@@ -258,10 +269,6 @@ PRODUCT_PACKAGES += \
     TelephonyOverlayDevonf \
     TetheringConfigResOverlayDevonf \
     WifiResOverlayDevonf
-
-PRODUCT_PACKAGES += \
-    RegulatoryOverlayXT2237-1 \
-    RegulatoryOverlayXT2237-2
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -305,7 +312,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml \
-    frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.opengles.deqp.level-2021-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
@@ -313,9 +319,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2021-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/permissions/privapp-permissions-com.android.hotwordenrollment.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-com.android.hotwordenrollment.xml
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6855
@@ -328,7 +331,6 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor \
     libmtkperf_client_vendor \
     libmtkperf_client \
-    libpowerhalwrap_vendor \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub \
     vendor.mediatek.hardware.mtkpower@1.2.vendor
 
@@ -364,15 +366,24 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek \
     hardware/mediatek/libaedv \
     hardware/mediatek/libmtkperf_client \
-    hardware/mediatek/wlan/wifi_hal \
     $(DEVICE_PATH)
+
+# Spatial Audio: optimize spatializer effect
+PRODUCT_PROPERTY_OVERRIDES += \
+       audio.spatializer.effect.util_clamp_min=300
+
+# Spatial Audio: declare use of spatial audio
+PRODUCT_PROPERTY_OVERRIDES += \
+       ro.audio.spatializer_enabled=true \
+       ro.audio.headtracking_enabled=true \
+       persist.vendor.audio.spatializer.speaker_enabled=true
 
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.mediatek
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
+ 
+ PRODUCT_COPY_FILES += \
+     $(DEVICE_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # Touch
 PRODUCT_PACKAGES += \
@@ -402,6 +413,9 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     android.hardware.wifi.supplicant@1.4.vendor
+
+PRODUCT_PACKAGES += \
+    libwifi-hal-wrapper
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
