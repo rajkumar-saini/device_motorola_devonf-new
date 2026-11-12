@@ -1,25 +1,59 @@
 [
   {
-    "repository": "rajkumar-saini/device_motorola_devonf-kernel",
-    "target_path": "device/motorola/devonf-kernel"
+    "repository": "kjdev16/vendor_motorola_devonf",
+    "target_path": "vendor/motorola/devonf",
+    "remote": "github",
+    "branch": "seventeen"
   },
   {
-    "repository": "rajkumar-saini/vendor_motorola_devonf",
-    "target_path": "vendor/motorola/devonf"
-  },
-  {
-    "remote": "gitlab",
-    "repository": "rajkumar-saini/vendor_motorola_devonf-motcamera",
-    "target_path": "vendor/motorola/devonf-motcamera"
-  },
-  {
-    "repository": "YAAP/hardware_mediatek",
-    "target_path": "hardware/mediatek"
+    "repository": "kjdev16/device_motorola_devonf-kernel",
+    "target_path": "device/motorola/devonf-kernel",
+    "remote": "github",
     "branch": "sixteen"
   },
   {
-    "repository": "YAAP/device_mediatek_sepolicy_vndr",
-    "target_path": "device/mediatek/sepolicy_vndr"
+    "repository": "sreejith7676/vendor_motorola_devonf-motcamera",
+    "target_path": "vendor/motorola/devonf-motcamera",
+    "remote": "github",
+    "branch": "16"
+  },
+  {
+    "repository": "kjdev16/hardware_mediatek",
+    "target_path": "hardware/mediatek",
+    "remote": "github",
     "branch": "sixteen"
+  },
+  {
+    "repository": "yaap/device_mediatek_sepolicy_vndr",
+    "target_path": "device/mediatek/sepolicy_vndr",
+    "remote": "github",
+    "branch": "seventeen"
+  },
+  {
+    "repository": "kjdev16/mist_new_vendor_lineage-priv_keys",
+    "target_path": "vendor/lineage-priv/keys",
+    "remote": "github",
+    "branch": "main"
+  },
+  {
+    "repository": "kjdev16/hardware_google_pixel",
+    "target_path": "hardware/google/pixel",
+    "remote": "github",
+    "branch": "17.0",
+    "override":true
+  },
+  {
+    "repository": "kjdev16/android_hardware_lineage_interfaces",
+    "target_path": "hardware/lineage/interfaces",
+    "remote": "github",
+    "branch": "lineage-24.0",
+    "override":true
+  },
+  {
+    "repository": "kjdev16/packages_modules_Bluetooth",
+    "target_path": "packages/modules/Bluetooth",
+    "remote": "github",
+    "branch": "17.0",
+      "override":true
   }
 ]

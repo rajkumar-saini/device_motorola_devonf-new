@@ -1,23 +1,21 @@
-From 54fc9656f1b29634a59f6bdc7e80326d523c45a3 Mon Sep 17 00:00:00 2001
+From f66b2916077f504512c42037ef6c724d94a69439 Mon Sep 17 00:00:00 2001
 From: Mashopy <eliasgheeraert@gmail.com>
-Date: Tue, 9 Dec 2025 21:11:05 +0100
-Subject: [PATCH 1/2] MtkGbaService: Remove references to TelephonyMetrics
+Date: Sat, 20 Dec 2025 17:08:58 +0530
+Subject: [PATCH 1/1] MtkGbaService: Remove references to TelephonyMetrics
 
 Google deprecated TelephonyMetrics class in Android 16 QPR2 as it was considered legacy code [1].
 
 [1] https://android.googlesource.com/platform/frameworks/opt/telephony/+/a1e87f8d20c88efa8887091059d6abb5b5b2f0d0
-
-[cyberknight777: Adapt to cancunf]
-Signed-off-by: Cyber Knight <cyberknight755@gmail.com>
 ---
- .../gbaservice/ril/GbaRIL$RilHandler.smali      | 17 -----------------
- 1 file changed, 17 deletions(-)
+ .../gbaservice/ril/GbaRIL$RilHandler.smali    | 17 ----------
+ .../com/mediatek/gbaservice/ril/GbaRIL.smali  | 33 -------------------
+ 2 files changed, 50 deletions(-)
 
 diff --git a/smali/com/mediatek/gbaservice/ril/GbaRIL$RilHandler.smali b/smali/com/mediatek/gbaservice/ril/GbaRIL$RilHandler.smali
-index b6a7888..ad12276 100644
+index c926df6..cd8355e 100644
 --- a/smali/com/mediatek/gbaservice/ril/GbaRIL$RilHandler.smali
 +++ b/smali/com/mediatek/gbaservice/ril/GbaRIL$RilHandler.smali
-@@ -154,23 +154,6 @@
+@@ -165,23 +165,6 @@
  
      invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V
  
@@ -41,6 +39,71 @@ index b6a7888..ad12276 100644
      .line 359
      :cond_3
      iget-object p0, p0, Lcom/mediatek/gbaservice/ril/GbaRIL$RilHandler;->this$0:Lcom/mediatek/gbaservice/ril/GbaRIL;
+diff --git a/smali/com/mediatek/gbaservice/ril/GbaRIL.smali b/smali/com/mediatek/gbaservice/ril/GbaRIL.smali
+index 05cb86d..b52af9a 100644
+--- a/smali/com/mediatek/gbaservice/ril/GbaRIL.smali
++++ b/smali/com/mediatek/gbaservice/ril/GbaRIL.smali
+@@ -38,8 +38,6 @@
+ 
+ .field private final mClientWakelockTracker:Lcom/android/internal/telephony/ClientWakelockTracker;
+ 
+-.field private mMetrics:Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+ .field volatile mMtkRadioExModemProxy:Lvendor/mediatek/hardware/mtkradioex/modem/IMtkRadioExModem;
+ 
+ .field final mMtkRadioExModemProxyDeathRecipient:Lcom/mediatek/gbaservice/ril/GbaRIL$MtkRadioExModemProxyDeathRecipient;
+@@ -101,15 +99,6 @@
+     return-void
+ .end method
+ 
+-.method static bridge synthetic -$$Nest$fgetmMetrics(Lcom/mediatek/gbaservice/ril/GbaRIL;)Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-    .locals 0
+-
+-    .line 0
+-    iget-object p0, p0, Lcom/mediatek/gbaservice/ril/GbaRIL;->mMetrics:Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+-    return-object p0
+-.end method
+-
+ .method static bridge synthetic -$$Nest$mclearWakeLock(Lcom/mediatek/gbaservice/ril/GbaRIL;I)Z
+     .locals 0
+ 
+@@ -226,15 +215,6 @@
+ 
+     iput-object v1, p0, Lcom/mediatek/gbaservice/ril/GbaRIL;->mRequestList:Landroid/util/SparseArray;
+ 
+-    .line 265
+-    invoke-static {}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->getInstance()Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+-    move-result-object v1
+-
+-    iput-object v1, p0, Lcom/mediatek/gbaservice/ril/GbaRIL;->mMetrics:Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+-    const/4 v1, 0x0
+-
+     .line 269
+     iput-object v1, p0, Lcom/mediatek/gbaservice/ril/GbaRIL;->mMtkRadioExModemProxy:Lvendor/mediatek/hardware/mtkradioex/modem/IMtkRadioExModem;
+ 
+@@ -2289,19 +2269,6 @@
+ 
+     .line 709
+     :goto_0
+-    iget-object v1, p0, Lcom/mediatek/gbaservice/ril/GbaRIL;->mMetrics:Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+-    iget v2, p0, Lcom/mediatek/gbaservice/ril/GbaBaseCommands;->mPhoneId:I
+-
+-    iget v3, p1, Lcom/mediatek/gbaservice/ril/RILRequest;->mSerial:I
+-
+-    iget v4, p2, Landroid/hardware/radio/RadioResponseInfo;->error:I
+-
+-    iget v5, p1, Lcom/mediatek/gbaservice/ril/RILRequest;->mRequest:I
+-
+-    move-object v6, p3
+-
+-    invoke-virtual/range {v1 .. v6}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->writeOnRilSolicitedResponse(IIIILjava/lang/Object;)V
+ 
+     .line 711
+     iget p2, p2, Landroid/hardware/radio/RadioResponseInfo;->type:I
 -- 
 2.52.0
 

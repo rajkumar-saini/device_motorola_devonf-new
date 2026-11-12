@@ -1,11 +1,13 @@
 //
-// SPDX-FileCopyrightText: The LineageOS Project
+// Copyright (C) 2020 The LineageOS Project
+//
 // SPDX-License-Identifier: Apache-2.0
 
 cc_binary {
     name: "vendor.lineage.touch-service.devonf",
     vintf_fragments: ["vendor.lineage.touch-service.devonf.xml"],
     init_rc: ["vendor.lineage.touch-service.devonf.rc"],
+    defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     proprietary: true,
     srcs: [

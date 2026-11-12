@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: Yet Another AOSP Project
+ * Copyright (C) 2021 Yet Another AOSP Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,9 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreferenceCompat;
 
-import com.android.internal.lineage.hardware.LineageHardwareManager; // Need FWB support
-import com.android.internal.lineage.hardware.TouchscreenGesture; // Need FWB support
+import lineageos.hardware.LineageHardwareManager;
+import lineageos.hardware.TouchscreenGesture;
+import lineageos.providers.LineageSettings;
 import org.lineageos.settings.device.Constants;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.widget.SettingsBasePreferenceFragment;

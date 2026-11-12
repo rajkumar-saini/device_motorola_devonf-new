@@ -1,6 +1,6 @@
 #!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils python3
 #
-# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-FileCopyrightText: 2024 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -49,6 +49,11 @@ blob_fixups: blob_fixups_user_type = {
     'system_ext/priv-app/MtkGbaService/MtkGbaService.apk': blob_fixup()
         .apktool_patch('patches/MtkGbaService'),
     (
+        'system_ext/lib/libarmnn_ndk.mtk.so',
+        'system_ext/lib64/libarmnn_ndk.mtk.so'
+    ): blob_fixup()
+        .add_needed('liblog.so'),
+    (
         'system_ext/etc/init/init.vtservice.rc',
         'vendor/etc/init/android.hardware.neuralnetworks-shim-service-mtk.rc'
     ): blob_fixup()
@@ -73,14 +78,17 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so',
         'vendor/lib64/mt6855/libcam.utils.sensorprovider.so'
     ): blob_fixup()
-        .add_needed('android.hardware.sensors@1.0-convert-shared.so'),
+        .add_needed('android.hardware.sensors@1.0-convert-shared.so')
+        .replace_needed('libmnl.so', 'libmnl-mtk.so'),
     'vendor/lib64/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so': blob_fixup()
         .add_needed('android.hardware.sensors@1.0-convert-shared.so')
-        .replace_needed('libutils.so', 'libutils-v32.so'),
+        .replace_needed('libutils.so', 'libutils-v32.so')
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-legacy.so'),
     'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
         .add_needed('libstagefright_foundation-v33.so')
         .replace_needed('libutils.so','libutils-v32.so')
-        .replace_needed('libalsautils.so','libalsautils-v31.so'),
+        .replace_needed('libalsautils.so','libalsautils-v31.so')
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-legacy.so'),
     (
         'vendor/lib64/hw/mt6855/android.hardware.camera.provider@2.6-impl-mediatek.so',
         'vendor/lib64/mt6855/libmtkcam_stdutils.so',
@@ -97,17 +105,26 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/lib3a.ae.pipe.so'
     ): blob_fixup()
         .add_needed('liblog.so'),
-    'vendor/lib64/mt6855/libmnl.so': blob_fixup()
+    'vendor/lib64/mt6855/libmnl-mtk.so': blob_fixup()
         .add_needed('libcutils.so'),
-    'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
-        .regex_replace('1.1', '1.2')
-        .regex_replace('@1.0', '@1.2')
-        .regex_replace('default9', 'default'),
     (
-        'vendor/lib64/mt6855/libcam.hal3a.v3.so',
-        'vendor/lib64/hw/hwcomposer.mtk_common.so'
+        'vendor/lib/libcodec2_mtk_vdec.so',
+        'vendor/lib64/libcodec2_mtk_vdec.so',
+        'vendor/lib/libcodec2_mtk_venc.so',
+        'vendor/lib64/libcodec2_mtk_venc.so'
     ): blob_fixup()
-        .add_needed('libprocessgroup_shim.so'),
+        .replace_needed('libformatter.so', 'libformatter-v34.so'),
+    (
+        'vendor/lib64/libdlbdsservice.so',
+        'vendor/lib64/libcodec2_soft_ddpdec.so',
+        'vendor/lib64/soundfx/libswdap.so',
+        'vendor/lib64/soundfx/libdlbvol.so',
+        'vendor/lib64/libcodec2_soft_ac4dec.so',
+        'vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service'
+    ): blob_fixup()
+        .add_needed('libstagefright_foundation-v33.so'),
+    'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
+        .regex_replace('1.1', '1.2'),
     (
         'vendor/lib/mt6855/libneuralnetworks_sl_driver_mtk_prebuilt.so',
         'vendor/lib64/mt6855/libneuralnetworks_sl_driver_mtk_prebuilt.so',
@@ -120,16 +137,17 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libtflite_mtk.so'
     ): blob_fixup()
         .add_needed('libbase_shim.so'),
-    'system_ext/lib64/libimsma.so': blob_fixup()
-        .replace_needed('libsink.so', 'libsink-mtk.so'),
+    (
+        'vendor/lib64/mt6855/libcam.hal3a.v3.so',
+        'vendor/lib64/hw/hwcomposer.mtk_common.so'
+    ): blob_fixup()
+        .add_needed('libprocessgroup_shim.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
-    (
-        'vendor/lib64/librt_extamp_intf.so',
-        'vendor/lib64/hw/audio.primary.mediatek.so',
-        'vendor/lib64/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so',
-    ): blob_fixup()
-        .replace_needed('libtinyxml2.so', 'libtinyxml2-legacy.so'),
+    'system_ext/lib64/libimsma.so': blob_fixup()
+        .replace_needed('libsink.so', 'libsink-mtk.so'),
+     'system_ext/lib64/libsink-mtk.so': blob_fixup()
+        .add_needed('libaudioclient_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

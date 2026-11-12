@@ -4,6 +4,7 @@ android_app {
     overrides: ["TouchGestures"],
 
     srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
 
     certificate: "platform",
     privileged: true,
@@ -14,6 +15,7 @@ android_app {
         "androidx.core_core",
         "androidx.preference_preference",
         "org.lineageos.settings.resources",
+        "org.lineageos.platform",
     ],
 
     optimize: {

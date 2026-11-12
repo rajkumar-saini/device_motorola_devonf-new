@@ -1,5 +1,6 @@
 /*
- * SPDX-FileCopyrightText: The LineageOS Project
+ * Copyright (C) 2019 The LineageOS Project
+ *
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -36,6 +37,7 @@ ndk::ScopedAStatus TouchscreenGesture::setGestureEnabled(const Gesture& gesture,
                                           kGestureNodes[gesture.id].path)) {
         rc = ndk::ScopedAStatus::ok();
     }
+
     return rc;
 }
 
