@@ -30,7 +30,7 @@ GKI_PATH=$(getprop $PROP_GKI_PATH)
 vendor_list=('fpc' 'chipone')
 kernel_so_list=("/vendor/lib/modules/$GKI_PATH/fpc_mtk_tee.ko" "/vendor/lib/modules/$GKI_PATH/fpsensor_mtk_spi.ko")
 kernel_so_name_list=("fpc_mtk_tee.ko" "fpsensor_mtk_spi.ko")
-hal_list=('fps_hal' 'chipone_fp_hal')
+hal_list=('vendor.fingerprint-default' 'vendor.fingerprint-default')
 last_vendor_index=`expr ${#vendor_list[@]} - 1`
 vendor_list_size=${#vendor_list[@]}
 
